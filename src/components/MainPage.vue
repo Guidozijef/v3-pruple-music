@@ -140,9 +140,10 @@ const playTime = computed({
     return currentTime.value * (100 / state.duration); //将当前时间转换为进度条显示
   },
   set(val) {
-    console.log(val);
+    console.log(val, state.duration);
     const currTime = (val * state.duration) / 100;
     musicStore.setCurrentTime(currTime);
+    audio.value.currentTime = currTime.toFixed(3);
   },
 });
 
